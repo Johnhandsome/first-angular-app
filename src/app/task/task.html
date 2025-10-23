@@ -7,6 +7,8 @@
   </header>
 
   <ul>
-    <li></li>
+    @for (task of selectedUserTask; track task.id) {
+    <li><app-task-detail [task]="task"></app-task-detail></li>
+    }
   </ul>
 </section>

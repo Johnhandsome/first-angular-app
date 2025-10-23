@@ -9,7 +9,7 @@
   </ul>
 
   @if (selectedUser) {
-  <app-task [name]="selectedUser.name"></app-task>
+  <app-task [name]="selectedUser.name" [userId]="selectedUser.id"></app-task>
   } @else {
   <h2>Please select a user to see their tasks!</h2>
   }
