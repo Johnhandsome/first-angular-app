@@ -1,5 +1,9 @@
 import { Component, computed, EventEmitter, Input, output, Output } from '@angular/core'
-
+export interface userInterface {
+  id: string
+  name: string
+  avatar: string
+}
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -10,18 +14,20 @@ import { Component, computed, EventEmitter, Input, output, Output } from '@angul
 export class User {
   // avatar = input<string>()
   // name = input<string>()
-  @Input() id: string = '';
-  @Input() avatar: string = '';
-  @Input() name: string = '';
-  // @Output() select = new EventEmitter();
-  select = output<string>();
+  // @Input() id: string = '';
+  // @Input() avatar: string = '';
+  // @Input() name: string = '';
+  @Output() select = new EventEmitter();
+  // select = output<string>();
+
+  @Input() user!: userInterface
 
   get imagePath() {
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
   // imagePath = computed(() => 'assets/users/' + this.avatar());
 
   onSelectUser() {
-    this.select.emit(this.id)
+    this.select.emit(this.user.id)
   }
 }

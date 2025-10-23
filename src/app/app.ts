@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from "./header/header";
-import { User } from "./user/user";
+import { User, userInterface } from "./user/user";
 import { DUMMY_USERS } from './dummy-users';
 import { Task } from "./task/task";
 
@@ -15,9 +15,10 @@ import { Task } from "./task/task";
 export class App {
   protected readonly title = signal('first-angular-app');
   users = DUMMY_USERS;
-  selectedUser: any;
+  selectedUser?: userInterface;
 
   onSelectUser(id: string) {
-    return this.selectedUser = this.users.find(user => user.id == id)
+    this.selectedUser = this.users.find(user => user.id == id)
+    return this.selectedUser
   }
 }

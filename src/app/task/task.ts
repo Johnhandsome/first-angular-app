@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './task.css'
 })
 export class Task {
-  @Input() name: string = '';
+  @Input() name: string | undefined;
 }
