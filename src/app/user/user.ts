@@ -1,9 +1,7 @@
 import { Component, computed, EventEmitter, Input, output, Output } from '@angular/core'
-export interface userInterface {
-  id: string
-  name: string
-  avatar: string
-}
+import { type userInterface } from './user.model';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -20,7 +18,8 @@ export class User {
   @Output() select = new EventEmitter();
   // select = output<string>();
 
-  @Input() user!: userInterface
+  @Input({ required: true }) user!: userInterface
+  @Input({ required: true }) selected!: boolean
 
   get imagePath() {
     return 'assets/users/' + this.user.avatar;
