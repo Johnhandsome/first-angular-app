@@ -1,15 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskDetail } from './task-detail/task-detail';
+import { CreateForm } from './create-form/create-form';
 
 @Component({
   selector: 'app-task',
-  imports: [TaskDetail],
+  imports: [TaskDetail, CreateForm],
   templateUrl: './task.html',
   styleUrl: './task.css'
 })
 export class Task {
   @Input({ required: true }) name!: string
   @Input({ required: true }) userId!: string
+  @Output() isAddTaskSelected = false;
+
 
   tasks = [
     {
@@ -43,5 +46,9 @@ export class Task {
 
   onCompleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id)
+  }
+
+  onAddTask() {
+    return this.isAddTaskSelected = true
   }
 }

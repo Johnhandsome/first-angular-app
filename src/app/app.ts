@@ -1,5 +1,4 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, Input, signal } from '@angular/core';
 import { Header } from "./header/header";
 import { User } from "./user/user";
 import { DUMMY_USERS } from './dummy-users';
@@ -17,6 +16,7 @@ export class App {
   protected readonly title = signal('first-angular-app');
   users = DUMMY_USERS;
   selectedUser?: userInterface;
+  @Input() isCreateFormSelected?: boolean;
 
   onSelectUser(id: string) {
     this.selectedUser = this.users.find(user => user.id == id)

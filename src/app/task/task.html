@@ -1,8 +1,12 @@
 <section>
+  @if (isAddTaskSelected) {
+  <app-create-form></app-create-form>
+  }
+
   <header>
     <h2>{{ name }}'s Task</h2>
     <menu>
-      <button>Add task</button>
+      <button (click)="onAddTask()">Add task</button>
     </menu>
   </header>
 
